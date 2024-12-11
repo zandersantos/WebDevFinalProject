@@ -2,7 +2,7 @@
 <?php
 require('connect.php');
   
-
+session_start();
 if (isset($_GET['id'])) {
     $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
     $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -47,8 +47,11 @@ if($_POST && isset($_POST['content']))
 {
     $product_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
     $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+   
+    if(isset($_POST['command']) && $_POST['command'] == 'Add Review'&&($_SESSION["captcha"]==$_POST["captcha"]))
+    {
+        echo '<div class="alert alert-success">CAPTHCA is valid; proceed the message</div>';  
 
-    if (isset($_POST['command']) && $_POST['command'] == 'Add Review') {
         $query = "INSERT INTO Reviews (content, product_id) VALUES (:content, :product_id)";
         $statement4 = $db->prepare($query);
         $statement4->bindValue(':content', $content);
@@ -56,10 +59,17 @@ if($_POST && isset($_POST['content']))
         
 
         $location = "index.php";
+        $statement4->execute();
+        header("Location: {$location}");
     }
-    $statement4->execute();
-    header("Location: {$location}");
+    else  
+    {  
+        echo '<div class="alert alert-danger">CAPTHCA is not valid; ignore submission</div>';  
+    }
+    
+  
 }
+
 
 ?>
 
@@ -78,10 +88,14 @@ if($_POST && isset($_POST['content']))
             <h1>Product Details</h1>
         </div>
     </header>
+    <?php  
+
+?>
 
     <?php include('nav.php'); ?>
     <main class="container py-1">
-    <form method="POST">
+        
+    <form method="post">
         <?php if ($id): ?>
             <h1 class="product-name"><?=$product['product_name']?></h1>  
             <p class="product-description">
@@ -94,9 +108,15 @@ if($_POST && isset($_POST['content']))
                 <p><?= $row['content'] ?></p>
                 </h3>
             </article>
+            
+            
         <?php endwhile; ?>
                <a href="updatepages.php?id=<?= $product['product_id']?>" class="blog-post-edit">edit</a>
-               
+               <div class="form-group">
+    <div class="col-sm-5 pull-left"><label for="pwd">Anti Spam code, Please Enter 3 Black Symbols</label>
+    <img src="captcha.php" alt="captcha image"></div>
+	<div class="col-sm-7 pull-right"><input type="text" name="captcha" size="3″ maxlength="3″ class="form-control"></div>
+  </div>
                <img src="images/<?= $image['image_name'] ?>" alt="Uploaded Image">
         <?php else: ?>
             <p>No product found. <a href="index.php">Return to the homepage</a>.</p>

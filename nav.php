@@ -3,6 +3,7 @@
                 <a href="about.php">About Us</a>
                 <a href="contact.php">Contact</a>
                 <a href="adminnav.php">Admin</a>
+                <a href="ind.php">ind</a>
 
 
 </nav>
