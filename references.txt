@@ -1,3 +1,14 @@
+<!--------w------------
+    Final Project
+    Name: Zander Santos
+    Date: November. 24, 2024
+    Description: Critical Components Image References Page
+
+    Client Comment: This is the Image References page for Critical Components Admins. 
+    This page displays the product images used as an example for each product.
+   
+---------------------->
+
 Image References
 
 Orange Dice: https://www.amazon.com/HDdais-Polyhedral-Dungeons-Dragons-Tabletop/dp/B0CBVDKZ71
@@ -13,3 +24,183 @@ Purple Dice Bag: https://www.amazon.ca/KSNDie-Pockets-Storage-Dungeon-Dragons/dp
 Blue Dice Bag: https://www.amazon.ca/KSNDie-Pockets-Storage-Dungeon-Dragons/dp/B0BX8HDZPS
 
 Brown Dice Bag:https://www.amazon.ca/Handmade-Bag-Tray-Draw-Dungeons-Accessories-Hoarders/dp/B08K8VF4SV
+
+
+/********w*************
+    
+Project 4
+    Name: Zander Santos
+    Date: April. 18, 2024
+    Description: Home Page Styling.
+    
+**********************/
+
+/* Reset Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100%;
+    background-color: #00BFFF;
+}
+
+
+/* Ensure the body has enough padding to avoid overlap with the fixed footer */
+body {
+    padding-bottom: 50px; /* Matches the footer height */
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 55px;
+    text-align: left;
+    padding-left: 20px;
+    
+    color: #333;
+}
+
+.nav-links {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: -30px; /* Moves the navigation links up */
+    display: flex;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    margin: 0 10px;
+    color: #333;
+    font-size: 1rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Main */
+main {
+    text-align: center;
+    padding: 20px;
+}
+
+.main-image img {
+    max-width: 100%;
+    width:150px;
+    height: 150px;
+}
+
+.text-body {
+    text-align: left;
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+}
+
+/* Footer */
+footer {
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Set a consistent height */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+}
+
+.footer-links a {
+    text-decoration: none;
+    margin: 0 10px;
+    color: #333;
+    font-size: 1rem;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+
+
+Client Comment: This is the Review CAPTCHA for Critical Components. 
+    This page generates a CAPTCHA image to be used for user validation. 
+    he CAPTCHA consists of random characters displayed on an image, stored in a session variable for verification purposes. 
+
+<?php
+
+// <!-- ! Start a session to store the captcha value for later validation ! -->
+session_start();  
+// <!-- ! Set headers to prevent caching of the captcha image ! -->
+header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");   
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");   
+header("Cache-Control: no-store, no-cache, must-revalidate");   
+header("Cache-Control: post-check=0, pre-check=0", false);  
+header("Pragma: no-cache");   
+  
+// <!-- ! Function to generate a random string for the captcha ! -->
+function _generateRandom($length=6)  
+{  
+    // <!-- ! Define character ranges for the random string (digits and lowercase letters) ! -->
+    $_rand_src = array(  
+        array(48,57) //digits  
+        , array(97,122) //!lowercase chars!
+         //, array(65,90) //!uppercase chars!  
+    ); 
+
+    // <!-- ! Seed the random number generator ! --> 
+    srand ((double) microtime() * 1000000);  
+    $random_string = "";  
+
+    // <!-- ! Loop to build the random string character by character ! -->
+    for($i=0;$i<$length;$i++){  
+        $i1=rand(0,sizeof($_rand_src)-1);  
+        $random_string .= chr(rand($_rand_src[$i1][0],$_rand_src[$i1][1]));  
+    }  
+    return $random_string;  
+}  
+// <!-- ! Create an image resource from a background captcha image ! -->
+$im = @imagecreatefromjpeg("images/captcha.jpg");   
+
+if (!$im) {
+    // Handle image load failure
+    header("Content-type: text/plain");
+    echo "Captcha image not found!";
+    exit;
+}
+
+// <!-- ! Generate a random string and store it in the session ! -->
+$rand = _generateRandom(3);  
+$_SESSION['captcha'] = $rand;  
+
+// <!-- ! Draw the random string onto the captcha image with black text ! -->
+ImageString($im, 5, 2, 2, $rand[0]." ".$rand[1]." ".$rand[2]." ", ImageColorAllocate ($im, 0, 0, 0));  
+
+// <!-- ! Generate another random string for additional text on the captcha image ! -->
+$rand = _generateRandom(3);  
+ImageString($im, 5, 2, 2, " ".$rand[0]." ".$rand[1]." ".$rand[2], ImageColorAllocate ($im, 255, 0, 0));  
+
+// <!-- ! Output the captcha image as a JPEG and set the appropriate content type ! -->
+Header ('Content-type: image/jpeg');  
+imagejpeg($im,NULL,100);  
+
+// <!-- ! Free memory by destroying the image resource ! -->
+ImageDestroy($im);  
+?>  

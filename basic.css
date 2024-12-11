@@ -1,0 +1,263 @@
+/***************
+Project: Critical Components - Dungeons & Dragons Store
+Name: Zander Santos
+Date: November 24, 2024
+Description: Homepage Styling for the Critical Components Online Store
+****************/
+
+/* Reset Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif; /* A more medieval-like font */
+    min-height: 100%;
+    background-color: #3C3C3C; /* Slightly lighter dark background */
+    color: #F1E2C6; /* Softer parchment color for text */
+}
+
+/* Ensure the body has enough padding to avoid overlap with the fixed footer */
+body {
+    padding-bottom: 50px; /* Matches the footer height */
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    background-color: #6A5A47; /* Lighter brown, reminiscent of aged wood */
+    padding: 20px 40px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Lighter shadow for a softer look */
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #E0C75A; /* Lighter gold to still evoke treasure feel */
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-family: 'Times New Roman', serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle text outline effect */
+}
+
+/* Navigation Bar */
+.nav-links {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    background-color: #665B4A; /* Lighter brown to complement header */
+}
+
+.nav-links a {
+    text-decoration: none;
+    margin: 0 15px;
+    color: #E0C75A; /* Lighter gold to match header */
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Adding text outline */
+}
+
+.nav-links a:hover {
+    color: #F9E179; /* Even lighter gold for hover effect */
+    text-decoration: underline;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Enhanced outline on hover */
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    background-color: #2E2E2E; /* Slightly lighter dark gray for main section */
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #E0C75A; /* Lighter gold for consistency */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Adding text outline */
+}
+
+/* Product List */
+.product-list {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #665B4A; /* Lighter brown for product list */
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
+}
+
+.product-list a {
+    text-decoration: none;
+    color: #F9E179; /* Lighter gold for product name */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Adding text outline */
+}
+
+.product-list a:hover {
+    color: #E0C75A; /* Lighter gold on hover */
+    text-decoration: underline;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); /* Enhanced outline on hover */
+}
+
+.product-list h3 {
+    margin: 10px 0;
+}
+
+/* Footer */
+footer {
+    background-color: #6A5A47; /* Lighter brown to match header */
+    padding: 15px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for visual separation */
+}
+
+footer a {
+    text-decoration: none;
+    margin: 0 10px;
+    color: #E0C75A; /* Lighter gold to match header */
+    font-size: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Adding text outline */
+}
+
+footer a:hover {
+    color: #F9E179; /* Lighter gold on hover */
+    text-decoration: underline;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Enhanced outline on hover */
+}
+
+/* Utility Class for Containers */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        font-size: 0.9rem;
+    }
+
+    .product-list {
+        width: 95%; /* Adjust product listing to be more mobile-friendly */
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+.product-detail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-info {
+    flex: 1 1 50%;
+    padding-right: 20px;
+}
+
+.product-image-reviews {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Product Image */
+.product-image {
+    max-width: 300px; /* Limit the width of the image */
+    margin-right: 20px;
+    display: block; /* Ensures the image container is treated as a block element */
+    margin-left: auto; /* Centers the image horizontally */
+    margin-right: auto; /* Centers the image horizontally */
+}
+
+.product-image img {
+    width: 100%; /* Ensure the image takes up 100% of its container's width */
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #ddd;
+}
+
+
+
+/* Review Item Styling */
+.review-item {
+    margin-bottom: 15px;
+    font-size: 1.2rem; /* Slightly larger font size for each review */
+    color: #F1E2C6; /* Softer parchment color for the review text */
+    border-bottom: 1px solid #E0C75A; /* Gold border between reviews */
+    padding-bottom: 10px;
+}
+
+.review-item:last-child {
+    border-bottom: none; /* Remove border from the last review */
+}
+button, .button-primary {
+    padding: 10px 20px;
+    background-color: brown;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover, .button-primary:hover {
+    background-color: brown;
+}
+
+.review-post{
+    font-size: 1rem;
+    color:white;
+    border-style: double;
+
+}
+
+.review-post {
+    background-color: #665B4A; /* Lighter brown background */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #F1E2C6; /* Smaller 1px border around reviews */
+    margin-bottom: 10px;
+    font-size: 1rem;
+    max-width: 600px; /* Set a max width for the review box */
+    width: auto; /* Let the width auto adjust based on content */
+    word-wrap: break-word; /* Ensure text wraps correctly if too long */
+    display: inline-block; /* Makes the box fit around content */
+}
+
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #2E2E2E;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #F1E2C6;
+    border-radius: 5px;
+    background-color: #3C3C3C;
+    color: #F1E2C6;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #F1E2C6;
+    border-radius: 5px;
+    background-color: #3C3C3C;
+    color: #F1E2C6;
+}
