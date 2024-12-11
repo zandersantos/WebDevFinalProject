@@ -1,0 +1,109 @@
+/********w*************
+    
+Project 4
+    Name: Zander Santos
+    Date: April. 18, 2024
+    Description: Home Page Styling.
+    
+**********************/
+
+/* Reset Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100%;
+}
+
+/* Ensure the body has enough padding to avoid overlap with the fixed footer */
+body {
+    padding-bottom: 50px; /* Matches the footer height */
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 55px;
+    text-align: left;
+    padding-left: 20px;
+    
+    color: #333;
+}
+
+.nav-links {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: -30px; /* Moves the navigation links up */
+    display: flex;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    margin: 0 10px;
+    color: #333;
+    font-size: 1rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Main */
+main {
+    text-align: center;
+    padding: 20px;
+}
+
+.main-image img {
+    max-width: 100%;
+    width:150px;
+    height: 150px;
+}
+
+.text-body {
+    text-align: left;
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+}
+
+/* Footer */
+footer {
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Set a consistent height */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+}
+
+.footer-links a {
+    text-decoration: none;
+    margin: 0 10px;
+    color: #333;
+    font-size: 1rem;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
